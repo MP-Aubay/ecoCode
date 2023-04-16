@@ -27,6 +27,9 @@ services:
       - type: bind
         source: ./python-plugin/target/ecocode-python-plugin-1.2.1-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.2.1-SNAPSHOT.jar
+      - type: bind
+        source: ./html-plugin/target/ecocode-html-plugin-1.2.1-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-html-plugin-1.2.1-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"

@@ -27,6 +27,7 @@
         <module>java-plugin</module>
         <module>javascript-plugin</module>
         <module>php-plugin</module>
+        <module>html-plugin</module>
     </modules>
 
     <scm>
