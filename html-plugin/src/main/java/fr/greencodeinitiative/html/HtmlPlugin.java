@@ -12,6 +12,7 @@ public class HtmlPlugin implements Plugin {
       context.addExtensions(
         // web rules repository
         HtmlRulesDefinition.class,
+        // custom HTML sensor
         HtmlSensor.class
       );
     }

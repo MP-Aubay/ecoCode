@@ -3,7 +3,6 @@ package fr.greencodeinitiative.html.core;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import org.sonar.api.batch.fs.FilePredicate;
@@ -19,15 +18,12 @@ import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
-import org.sonar.plugins.html.analyzers.ComplexityVisitor;
-import org.sonar.plugins.html.analyzers.PageCountLines;
 import org.sonar.plugins.html.api.HtmlConstants;
 import org.sonar.plugins.html.checks.AbstractPageCheck;
 import org.sonar.plugins.html.checks.HtmlIssue;
 import org.sonar.plugins.html.checks.PreciseHtmlIssue;
 import org.sonar.plugins.html.lex.PageLexer;
 import org.sonar.plugins.html.lex.VueLexer;
-import org.sonar.plugins.html.visitor.DefaultNodeVisitor;
 import org.sonar.plugins.html.visitor.HtmlAstScanner;
 import org.sonar.plugins.html.visitor.HtmlSourceCode;
 
@@ -41,7 +37,7 @@ public class HtmlSensor implements Sensor {
     private final Checks<Object> checks;
 
     public HtmlSensor(CheckFactory checkFactory) {
-      this.checks = checkFactory.create(HtmlRulesDefinition.REPOSITORY_KEY).addAnnotatedChecks((Iterable) CheckClasses.getCheckClasses());
+      this.checks = checkFactory.create(HtmlRulesDefinition.REPOSITORY_KEY).addAnnotatedChecks((Iterable<Class<?>>) CheckClasses.getCheckClasses());
     }
 
     @Override
@@ -125,13 +121,7 @@ public class HtmlSensor implements Sensor {
      * Create PageScanner with Visitors.
      */
     private HtmlAstScanner setupScanner(SensorContext context) {
-      List<DefaultNodeVisitor> visitors = new ArrayList<>();
-//      if (context.runtime().getProduct() != SonarProduct.SONARLINT) {
-//        visitors.add(new HtmlTokensVisitor(context));
-//      }
-      visitors.add(new PageCountLines());
-      visitors.add(new ComplexityVisitor());
-      HtmlAstScanner scanner = new HtmlAstScanner(visitors);
+      HtmlAstScanner scanner = new HtmlAstScanner(new ArrayList<>());
 
       for (Object check : checks.all()) {
         ((AbstractPageCheck) check).setRuleKey(checks.ruleKey(check));

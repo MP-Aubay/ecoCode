@@ -1,1 +1,31 @@
-<p>Programmers should avoid using HTML autoplay attribute</p>
+<p>The goal of this rule is to ban usage of "autoplay" attribute to make sure that media is not downloaded if user does not play it.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+&lt;body&gt;
+  &lt;audio autoplay src="/media/audio.mp3"&gt;  &lt;!-- Noncompliant --&gt;
+    &lt;a href="/media/audio.mp3"&gt;
+      Download audio
+    &lt;/a&gt;
+  &lt;/audio&gt;
+  &lt;video autoplay src="/media/video.mp4"&gt;  &lt;!-- Noncompliant --&gt;
+    &lt;a href="/media/video.mp4"&gt;
+      Download video
+    &lt;/a&gt;
+  &lt;/video&gt;
+&lt;/body&gt;
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+&lt;body&gt;
+  &lt;audio src="/media/audio.mp3"&gt;
+    &lt;a href="/media/audio.mp3"&gt;
+      Download audio
+    &lt;/a&gt;
+  &lt;/audio&gt;
+  &lt;video src="/media/video.mp4"&gt;
+    &lt;a href="/media/video.mp4"&gt;
+      Download video
+    &lt;/a&gt;
+  &lt;/video&gt;
+&lt;/body&gt;
+</pre>

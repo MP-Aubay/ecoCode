@@ -10,9 +10,9 @@ public class AvoidAutoplayCheck extends AbstractPageCheck {
     @Override
     public void startElement(TagNode node) {
         if (isAudioTag(node) && hasAutoplayAttribute(node)) {
-            createViolation(node, "Remove autoplay attribute to this audio");
+            createViolation(node, "Avoid using autoplay attribute in audio element");
         } else if (isVideoTag(node) && hasAutoplayAttribute(node)) {
-            createViolation(node, "Remove autoplay attribute to this video");
+            createViolation(node, "Avoid using autoplay attribute in video element");
         }
     }
     

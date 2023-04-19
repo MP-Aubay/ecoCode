@@ -3,7 +3,6 @@ package fr.greencodeinitiative.html.rules;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.html.api.HtmlConstants;
-import org.sonar.plugins.html.rules.SonarWayProfile;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 public class HtmlRulesDefinition implements RulesDefinition {
@@ -23,7 +22,7 @@ public class HtmlRulesDefinition implements RulesDefinition {
     public void define(Context context) {
 		NewRepository repository = context.createRepository(REPOSITORY_KEY, HtmlConstants.LANGUAGE_KEY).setName(REPOSITORY_NAME);
 		
-		RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(METADATA_PATH, SonarWayProfile.JSON_PROFILE_PATH, this.sonarRuntime);
+		RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(METADATA_PATH, this.sonarRuntime);
 		
 		ruleMetadataLoader.addRulesByAnnotatedClass(repository, CheckClasses.getCheckClasses());
 		

@@ -13,7 +13,7 @@ public final class CheckClasses {
     }
 
     /**
-     * Gets the list of XML checks.
+     * Gets the list of HTML checks.
      */
     public static List<Class<?>> getCheckClasses() {
         return CLASSES;

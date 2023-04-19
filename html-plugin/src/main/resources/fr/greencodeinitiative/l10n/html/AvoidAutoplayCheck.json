@@ -1,5 +1,5 @@
  {
-  "title": "Autoplay should not be used",
+  "title": "The \"autoplay\" attribute should be avoided",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

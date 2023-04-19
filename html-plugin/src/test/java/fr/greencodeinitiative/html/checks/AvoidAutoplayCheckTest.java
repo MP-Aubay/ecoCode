@@ -12,8 +12,8 @@ public class AvoidAutoplayCheckTest {
         HtmlSourceCode sourceCode = TestHelper.scan(new File("src/test/resources/checks/AvoidAutoplayCheck/document.html"), new AvoidAutoplayCheck());
         
         CheckMessagesVerifier.verify(sourceCode.getIssues())
-            .next().atLine(7).withMessage("Remove autoplay attribute to this audio")
-            .next().atLine(9).withMessage("Remove autoplay attribute to this video")
+            .next().atLine(7).withMessage("Avoid using autoplay attribute in audio element")
+            .next().atLine(9).withMessage("Avoid using autoplay attribute in video element")
             .noMore();
     }
     
@@ -22,8 +22,8 @@ public class AvoidAutoplayCheckTest {
         HtmlSourceCode sourceCode = TestHelper.scan(new File("src/test/resources/checks/AvoidAutoplayCheck/document.php"), new AvoidAutoplayCheck());
         
         CheckMessagesVerifier.verify(sourceCode.getIssues())
-            .next().atLine(6).withMessage("Remove autoplay attribute to this audio")
-            .next().atLine(9).withMessage("Remove autoplay attribute to this video")
+            .next().atLine(6).withMessage("Avoid using autoplay attribute in audio element")
+            .next().atLine(9).withMessage("Avoid using autoplay attribute in video element")
             .noMore();
     }
     
@@ -32,8 +32,8 @@ public class AvoidAutoplayCheckTest {
         HtmlSourceCode sourceCode = TestHelper.scan(new File("src/test/resources/checks/AvoidAutoplayCheck/document.jsp"), new AvoidAutoplayCheck());
         
         CheckMessagesVerifier.verify(sourceCode.getIssues())
-            .next().atLine(7).withMessage("Remove autoplay attribute to this audio")
-            .next().atLine(9).withMessage("Remove autoplay attribute to this video")
+            .next().atLine(7).withMessage("Avoid using autoplay attribute in audio element")
+            .next().atLine(9).withMessage("Avoid using autoplay attribute in video element")
             .noMore();
     }
     
